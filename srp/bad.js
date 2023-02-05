@@ -3,9 +3,7 @@ function Question(questions) {
 
   this.printReport = () => {
     console.log("Printer called");
-    this.questions.forEach((value, index) => {
-      console.log(value);
-    })
+    console.log("3th party printer function called");
   };
 
   this.saveDatabase = (questions) => {
@@ -18,15 +16,22 @@ function Question(questions) {
     this.questions = this.questions.filter(q => q !== question);
     this.saveDatabase(this.questions);
   }
+
+  this.add = (question) => {
+    console.log("added " + question);
+    this.questions.push(question);
+		this.saveDatabase(this.questions);
+  }
 }
 
 const q = new Question([
-  "Nguyễn Huệ và Quang Trung có phải cùng một người?",
-  "Tại sao những trái cam lại có màu cam?",
-  "Ai đã đặt tên cho dòng sông?",
-  "Question 1"
+  "Question 1",
+  "Question 2",
+  "Question 3",
+  "Question 4"
 ]);
 
-console.log(q.questions);
 q.remove("Question 1");
-console.log(q.questions);
+q.printReport();
+q.add("Question 5");
+q.printReport();

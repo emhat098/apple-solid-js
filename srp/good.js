@@ -1,4 +1,5 @@
 function printer(data) {
+	console.log("3th party function called");
   log(`[${new Date().toLocaleString()}]--------------------------------`);
   log(data, "info");
 }
@@ -24,21 +25,22 @@ function Question(questions) {
     this.questions = this.questions.filter(q => q !== question);
     saveDatabase(this.questions);
   }
-  
+
   this.add = (question) => {
     log("added " + question);
     this.questions.push(question);
+		saveDatabase(this.questions);
   }
 }
 
 const q = new Question([
-  "Nguyễn Huệ và Quang Trung có phải cùng một người?",
-  "Tại sao những trái cam lại có màu cam?",
-  "Ai đã đặt tên cho dòng sông?",
-  "Question 1"
+	"Question 1",
+	"Question 2",
+	"Question 3",
+	"Question 4"
 ]);
 
 q.remove("Question 1");
 q.printReport();
-q.add("Question 2");
+q.add("Question 5");
 q.printReport();
